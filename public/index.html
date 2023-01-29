@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 ">
+    <div class="rounded-xl bg-gray-900 w-60 text-center p-4 m-auto my-16">
+        <h1 class="text-black font-bold text-center">Calculer son IMC</h1>
+        <form id="imc">
+            <label for="taille" class="text-white">Height</label>
+            <input class="px-3 py-2 block border border-slate-300 rounded-md" type="number" name="taille" id="taille"
+                placeholder="Type your height in cm" min="60" required>
+            <label for="poids" class="text-white">Pounds</label>
+            <input class="px-3 py-2 block border border-slate-300 rounded-md" type="number" name="poids" id="poids"
+                placeholder="Type your pounds in kg" step="0.1" min="2" required>
+            <input class="rounded-md bg-blue-500 hover:bg-blue-100 my-3 px-2" type="submit" value="Calculer">
+        </form>
+
+        <div id="result" class="text-sm italic text-gray-500">&nbsp</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
