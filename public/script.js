@@ -1,18 +1,20 @@
 "use strict";
 
 let rslt = document.getElementById("result");
+rslt.innerHTML = "En attente du résultat...";
 document.getElementById("imc").onsubmit = function (e) {
     e.preventDefault();
-    let taille = document.getElementById("taille");
-    let poids = document.getElementById("poids");
+    let taille = document.getElementById("taille").value;
+    let poids = document.getElementById("poids").value;
     let msg = "";
     let imcv = 0.0;
 
-    if (taille.isEmpty || poids.isEmpty) {
+    console.log("Est:"+taille.length);
+    console.log("Type:"+typeof(taille.value));
+
+    if (taille.length == 0 || poids.value == 0) {
         msg = "Vous n'avez pas saisi tous les champs !";
     } else {
-        taille = taille.value;
-        poids = poids.value;
         imcv = poids / ((taille * taille) / 10000);
 
         msg = "L'IMC est " + imcv.toFixed(2);
