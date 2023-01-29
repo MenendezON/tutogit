@@ -9,15 +9,12 @@ document.getElementById("imc").onsubmit = function (e) {
     let msg = "";
     let imcv = 0.0;
 
-    console.log("Est:"+taille.length);
-    console.log("Type:"+typeof(taille.value));
-
     if (taille.length == 0 || poids.value == 0) {
         msg = "Vous n'avez pas saisi tous les champs !";
     } else {
         imcv = poids / ((taille * taille) / 10000);
-
-        msg = "L'IMC est " + imcv.toFixed(2);
+        rslt.innerHTML = msg;
+        msg = "L'IMC est <span class='font-bold'>" + imcv.toFixed(1) + "</span>";
         if (imc > 25 && imc < 29.9) {
             msg += "kg/m², vous êtes en surpoids";
         } else if (imc > 30 && imc < 34.9) {
