@@ -9,7 +9,7 @@ document.getElementById("imc").onsubmit = function (e) {
     let msg = "";
     let imcv = 0.0;
 
-    if (taille.length == 0 || poids.value == 0) {
+    if (taille.length == 0 || poids.length == 0) {
         msg = "Vous n'avez pas saisi tous les champs !";
     } else {
         imcv = poids / ((taille * taille) / 10000);
