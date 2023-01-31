@@ -9,12 +9,10 @@ let quizz = '{ "quizzes" : [' +
 
 const obj = JSON.parse(quizz);
 
-
-
-
 let list = "<form name='form' id='form'>";
 let nbQuestion = Object.keys(obj.quizzes).length;
 for (let i = 0; i < nbQuestion; i++) {
+    list += "<div id='div-"+i+"'>";
     list += "<strong>Q"+(i+1)+":"+obj.quizzes[i].q+"<br></strong>";
     list += "<input type='radio' id='qst"+i+"1' name='q"+i+"' value='"+obj.quizzes[i].r1+"'>";
     list += "<label for='qst"+i+"1'> "+obj.quizzes[i].r1+"</label></br>";
@@ -25,13 +23,19 @@ for (let i = 0; i < nbQuestion; i++) {
     list += "<input type='radio' id='qst"+i+"4' name='q"+i+"' value='"+obj.quizzes[i].r4+"'>";
     list += "<label for='qst"+i+"4'> "+obj.quizzes[i].r4+"</label></br>";
     list += "</br>";
+    list += "</div>";
 }
 list += "<input class='bg-green-800 p-1 rounded text-white' type='submit' value='Submit'>"; 
 list += "</form>";
 document.getElementById("quizz").innerHTML = list;
 
+
+//document.getElementById("div-0").style.backgroundColor = "lightblue";
+
+
 document.getElementById("form").addEventListener("submit", function (event) {
     event.preventDefault();
+
     let msg = "";
     if (document.forms["form"]["q0"].value == "" || document.forms["form"]["q1"].value == "") {
         msg = "<span class='bg-red-500 text-white p-1 rounded'>Veuillez selectionner une réponse de chaque question</span>";
@@ -43,8 +47,13 @@ document.getElementById("form").addEventListener("submit", function (event) {
         }
     }
 
-    console.log(document.forms["form"]["q0"].value);
-    console.log(document.forms["form"]["q1"].value);
+    for (let y = 0; y < correctAnswer.length; y++) {
+        if (document.forms["form"]["q"+y].value != correctAnswer[y]){
+            document.getElementById("div-"+y).style.backgroundColor = "red";
+        }else{
+            document.getElementById("div-"+y).style.backgroundColor = "lightgreen";
+        }
+    }
 
     document.getElementById("msg").innerHTML = msg;
     
